@@ -1,0 +1,126 @@
+body,p,li,a {
+	font-family: georgia, times, serif;
+	font-size: 13pt;
+}
+
+h1,h2,h3 {
+	font-family: arial, serif;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	width: 800px;
+	margin: 10px auto;
+	border: 1px dotted brown;
+	margin: 10px auto
+}
+
+#header {
+	width: 100%;
+	height: 64px;
+	border: 1px dotted grey;
+}
+
+#navigation {
+	width: 100%;
+	height: 16px;
+	border: 1px dotted grey;
+}
+
+#footer {
+	width: 100%;
+	height: 32px;
+	border: 1px dotted grey;
+}
+
+#logo {
+	
+}
+
+#title {
+	
+}
+
+#copy {
+	
+}
+
+#content {
+	width: 100%;
+	border: 1px dotted red;
+}
+
+/* -------------- FORMS ---------------*/
+
+fieldset {
+	
+}
+
+#stylized {
+	border : solid 2px #b7ddf2;
+	font-size : 12px;
+	background : #ebf4fb;
+}
+
+#stylized h1 {
+	font-size : 14px;
+	font-weight : bold;
+	margin-bottom : 8px;
+}
+
+#stylized p {
+	font-size : 11px;
+	color : #666666;
+	margin-bottom : 20px;
+	border-bottom : solid 1px #b7ddf2;
+	padding-bottom : 10px;
+}
+
+#stylized label {
+	display : inline;
+	font-weight: bold;
+	text-align: right;
+	width: 140px;
+	float: left;
+}
+
+#stylized .small {
+	color: #666666;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	width: 140px;
+}
+
+#stylized .form_input_line {
+	clear : both;
+	display : block;
+	width : 100%;
+}
+
+#stylized input {
+	float: left;
+	font-size: 12px;
+	padding: 4px 2px;
+	border: solid 1px #aacfe4;
+	width: 200px;
+	margin: 2px 0 20px 10px;
+}
+
+#stylized .submitButton {
+	clear: both;
+	margin-left: 150px;
+	width: 160px;
+	height: 31px;
+	background: #666666;
+	text-align: center;
+	line-height: 21px;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+}

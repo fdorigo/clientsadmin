@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="com.fdorigo.igadmin.persistent"/>
+	<db-entity name="CLIENT">
+		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_STATE" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_STREET" type="VARCHAR" length="100"/>
+		<db-attribute name="ADDRESS_ZIP" type="VARCHAR" length="50"/>
+		<db-attribute name="DATE_BIRTH" type="DATE"/>
+		<db-attribute name="DATE_JOINED" type="DATE"/>
+		<db-attribute name="EMAIL_ADDRESS" type="VARCHAR" length="100"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="LOCATION_ID" type="INTEGER"/>
+		<db-attribute name="NAME_FIRST" type="VARCHAR" length="50"/>
+		<db-attribute name="NAME_LAST" type="VARCHAR" length="50"/>
+		<db-attribute name="NAME_MIDDLE" type="VARCHAR" length="50"/>
+		<db-attribute name="PHONE_PRIMARY" type="VARCHAR" length="20"/>
+		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
+		<db-attribute name="TRAINER_ID" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="LOCATION">
+		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_STATE" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_STREET" type="VARCHAR" length="100"/>
+		<db-attribute name="ADDRESS_ZIP" type="VARCHAR" length="10"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="MGR_NAME_FIRST" type="VARCHAR" length="50"/>
+		<db-attribute name="MGR_NAME_LAST" type="VARCHAR" length="50"/>
+		<db-attribute name="NAME" type="VARCHAR" length="50"/>
+		<db-attribute name="OPENING_DATE" type="DATE"/>
+		<db-attribute name="PHONE_PRIMARY" type="VARCHAR" length="20"/>
+		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
+		<db-attribute name="TRAINER_ID" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="TRAINER">
+		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>
+		<db-attribute name="ADDRESS_STATE" type="VARCHAR" length="50"/>
+		<db-attribute name="ADDRESS_STREET" type="VARCHAR" length="100"/>
+		<db-attribute name="ADDRESS_ZIP" type="VARCHAR" length="50"/>
+		<db-attribute name="COMP_RATE" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="EMAIL_ADDRESS" type="VARCHAR" length="100"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="LOCATION_ID" type="INTEGER"/>
+		<db-attribute name="NAME_FIRST" type="VARCHAR" length="50"/>
+		<db-attribute name="NAME_LAST" type="VARCHAR" length="50"/>
+		<db-attribute name="NAME_MIDDLE" type="VARCHAR" length="50"/>
+		<db-attribute name="PHONE_PRIMARY" type="VARCHAR" length="20"/>
+		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
+	</db-entity>
+	<obj-entity name="Client" className="com.fdorigo.igadmin.persistent.Client" dbEntityName="CLIENT">
+		<obj-attribute name="addressApt" type="java.lang.String" db-attribute-path="ADDRESS_APT"/>
+		<obj-attribute name="addressCity" type="java.lang.String" db-attribute-path="ADDRESS_CITY"/>
+		<obj-attribute name="addressNum" type="java.lang.String" db-attribute-path="ADDRESS_NUM"/>
+		<obj-attribute name="addressState" type="java.lang.String" db-attribute-path="ADDRESS_STATE"/>
+		<obj-attribute name="addressStreet" type="java.lang.String" db-attribute-path="ADDRESS_STREET"/>
+		<obj-attribute name="addressZip" type="java.lang.String" db-attribute-path="ADDRESS_ZIP"/>
+		<obj-attribute name="dateBirth" type="java.util.Date" db-attribute-path="DATE_BIRTH"/>
+		<obj-attribute name="dateJoined" type="java.util.Date" db-attribute-path="DATE_JOINED"/>
+		<obj-attribute name="emailAddress" type="java.lang.String" db-attribute-path="EMAIL_ADDRESS"/>
+		<obj-attribute name="nameFirst" type="java.lang.String" db-attribute-path="NAME_FIRST"/>
+		<obj-attribute name="nameLast" type="java.lang.String" db-attribute-path="NAME_LAST"/>
+		<obj-attribute name="nameMiddle" type="java.lang.String" db-attribute-path="NAME_MIDDLE"/>
+		<obj-attribute name="phonePrimary" type="java.lang.String" db-attribute-path="PHONE_PRIMARY"/>
+		<obj-attribute name="phoneSecondary" type="java.lang.String" db-attribute-path="PHONE_SECONDARY"/>
+	</obj-entity>
+	<obj-entity name="Location" className="com.fdorigo.igadmin.persistent.Location" dbEntityName="LOCATION">
+		<obj-attribute name="addressApt" type="java.lang.String" db-attribute-path="ADDRESS_APT"/>
+		<obj-attribute name="addressCity" type="java.lang.String" db-attribute-path="ADDRESS_CITY"/>
+		<obj-attribute name="addressNum" type="java.lang.String" db-attribute-path="ADDRESS_NUM"/>
+		<obj-attribute name="addressState" type="java.lang.String" db-attribute-path="ADDRESS_STATE"/>
+		<obj-attribute name="addressStreet" type="java.lang.String" db-attribute-path="ADDRESS_STREET"/>
+		<obj-attribute name="addressZip" type="java.lang.String" db-attribute-path="ADDRESS_ZIP"/>
+		<obj-attribute name="mgrNameFirst" type="java.lang.String" db-attribute-path="MGR_NAME_FIRST"/>
+		<obj-attribute name="mgrNameLast" type="java.lang.String" db-attribute-path="MGR_NAME_LAST"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+		<obj-attribute name="openingDate" type="java.util.Date" db-attribute-path="OPENING_DATE"/>
+		<obj-attribute name="phonePrimary" type="java.lang.String" db-attribute-path="PHONE_PRIMARY"/>
+		<obj-attribute name="phoneSecondary" type="java.lang.String" db-attribute-path="PHONE_SECONDARY"/>
+		<obj-attribute name="trainerId" type="java.lang.Integer" db-attribute-path="TRAINER_ID"/>
+	</obj-entity>
+	<obj-entity name="Trainer" className="com.fdorigo.igadmin.persistent.Trainer" dbEntityName="TRAINER">
+		<obj-attribute name="addressApt" type="java.lang.String" db-attribute-path="ADDRESS_APT"/>
+		<obj-attribute name="addressCity" type="java.lang.String" db-attribute-path="ADDRESS_CITY"/>
+		<obj-attribute name="addressNum" type="java.lang.String" db-attribute-path="ADDRESS_NUM"/>
+		<obj-attribute name="addressState" type="java.lang.String" db-attribute-path="ADDRESS_STATE"/>
+		<obj-attribute name="addressStreet" type="java.lang.String" db-attribute-path="ADDRESS_STREET"/>
+		<obj-attribute name="addressZip" type="java.lang.String" db-attribute-path="ADDRESS_ZIP"/>
+		<obj-attribute name="compRate" type="java.lang.Integer" db-attribute-path="COMP_RATE"/>
+		<obj-attribute name="emailAddress" type="java.lang.String" db-attribute-path="EMAIL_ADDRESS"/>
+		<obj-attribute name="nameFirst" type="java.lang.String" db-attribute-path="NAME_FIRST"/>
+		<obj-attribute name="nameLast" type="java.lang.String" db-attribute-path="NAME_LAST"/>
+		<obj-attribute name="nameMiddle" type="java.lang.String" db-attribute-path="NAME_MIDDLE"/>
+		<obj-attribute name="phonePrimary" type="java.lang.String" db-attribute-path="PHONE_PRIMARY"/>
+		<obj-attribute name="phoneSecondary" type="java.lang.String" db-attribute-path="PHONE_SECONDARY"/>
+	</obj-entity>
+	<db-relationship name="location" source="CLIENT" target="LOCATION" toMany="false">
+		<db-attribute-pair source="LOCATION_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="trainer" source="CLIENT" target="TRAINER" toMany="false">
+		<db-attribute-pair source="TRAINER_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="clients" source="LOCATION" target="CLIENT" toMany="true">
+		<db-attribute-pair source="ID" target="LOCATION_ID"/>
+	</db-relationship>
+	<db-relationship name="trainers" source="LOCATION" target="TRAINER" toMany="true">
+		<db-attribute-pair source="ID" target="LOCATION_ID"/>
+	</db-relationship>
+	<db-relationship name="clients" source="TRAINER" target="CLIENT" toMany="true">
+		<db-attribute-pair source="ID" target="TRAINER_ID"/>
+	</db-relationship>
+	<db-relationship name="location" source="TRAINER" target="LOCATION" toMany="false">
+		<db-attribute-pair source="LOCATION_ID" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="location" source="Client" target="Location" deleteRule="Nullify" db-relationship-path="location"/>
+	<obj-relationship name="trainer" source="Client" target="Trainer" deleteRule="Nullify" db-relationship-path="trainer"/>
+	<obj-relationship name="clients" source="Location" target="Client" deleteRule="Deny" db-relationship-path="clients"/>
+	<obj-relationship name="trainers" source="Location" target="Trainer" deleteRule="Deny" db-relationship-path="trainers"/>
+	<obj-relationship name="clients" source="Trainer" target="Client" deleteRule="Deny" db-relationship-path="clients"/>
+	<obj-relationship name="location" source="Trainer" target="Location" deleteRule="Nullify" db-relationship-path="location"/>
+</data-map>
