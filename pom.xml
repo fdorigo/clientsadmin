@@ -5,8 +5,7 @@
 	<artifactId>igadmin</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<!-- TODO project name -->
-	<name>quickstart</name>
+	<name>Illuminate Gym Admin</name>
 	<description></description>
 	<!-- TODO <organization> <name>company name</name> <url>company url</url> 
 		</organization> -->
