@@ -1,4 +1,4 @@
-package com.fdorigo.igadmin.model;
+package com.fdorigo.igadmin.app.forms;
 
 import java.io.Serializable;
 

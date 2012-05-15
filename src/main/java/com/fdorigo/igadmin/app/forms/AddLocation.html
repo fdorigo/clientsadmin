@@ -24,6 +24,34 @@
 					<input type="text" wicket:id="locName" /> 
 				</div>
 
+				<div class="form_input_line">
+					<label>Manager Contact 
+					<span class="small">Specify the manager name</span>
+					</label> 
+					<input type="text" wicket:id="mgrNameFirst" /> 
+					<input type="text" wicket:id="mgrNameLast" /> 
+				</div>
+				
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Primary phone</span>
+					</label> 
+					<input class="phAre" maxlength="3" style="width:40px;" type="text" wicket:id="priPhArea" /> <span class="phoneSep">&mdash;</span>
+					<input class="phExc" maxlength="3" style="width:40px;" type="text" wicket:id="priPhExchange" /> <span class="phoneSep">&mdash;</span> 
+					<input class="phSuf" maxlength="4" style="width:60px;" type="text" wicket:id="priPhSuffix" /> <span class="phoneSep">ext:</span> 
+					<input class="phExt" maxlength="9" style="width:80px;" type="text" wicket:id="priPhExtension" /> 
+				</div>
+				
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Alternate phone</span>
+					</label> 
+					<input class="phAre" maxlength="3" style="width:40px;" type="text" wicket:id="secPhArea" /> <span class="phoneSep">&mdash;</span>
+					<input class="phExc" maxlength="3" style="width:40px;" type="text" wicket:id="secPhExchange" /> <span class="phoneSep">&mdash;</span> 
+					<input class="phSuf" maxlength="4" style="width:60px;" type="text" wicket:id="secPhSuffix" /> <span class="phoneSep">ext:</span> 
+					<input class="phExt" maxlength="9" style="width:80px;" type="text" wicket:id="secPhExtension" /> 
+				</div>
+
 				<div class="form_input_line">				
 					<label>Address 
 						<span class="small">Specify the location address</span>
@@ -37,9 +65,9 @@
 					<label>
 						&nbsp;
 					</label>				
-					<input style="width:80px;" type="text" wicket:id="locAddrCity" /> 
-					<select style="width:80px;" type="text" wicket:id="locAddrState"></select> 
-					<input style="width:80px;" type="text" wicket:id="locAddrZip" />
+					<input style="width:170px;" type="text" wicket:id="locAddrCity" /> 
+					<select style="width:170px;" type="text" wicket:id="locAddrState"></select> 
+					<input style="width:86px;" type="text" wicket:id="locAddrZip" />
 				</div>
 
 				<div class="form_input_line">
