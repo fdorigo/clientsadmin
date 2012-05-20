@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.AbstractReadOnlyModel;
@@ -16,9 +17,12 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 import com.fdorigo.igadmin.app.BasePage;
+import com.fdorigo.igadmin.app.forms.utils.FormUtils;
+import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
 import com.fdorigo.igadmin.model.DatabaseBridge;
 import com.fdorigo.igadmin.persistent.Address;
 import com.fdorigo.igadmin.persistent.Location;
+import com.fdorigo.igadmin.persistent.Trainer;
 
 public class AddLocation extends BasePage
 {
@@ -65,6 +69,7 @@ public class AddLocation extends BasePage
 		final Model<String> modelSecPhSuffix = new Model<String>("1234");
 		final Model<String> modelSecPhExtension = new Model<String>("ext");
 
+		final Model<String> modelEmailAddress = new Model<String>("manager@email.com");
 		
 		final List<StateSelectOption> listOfStates = new ArrayList<StateSelectOption>();
 		
@@ -107,67 +112,66 @@ public class AddLocation extends BasePage
 
 		//Location Name
 		TextField<String> field = new TextField<String>("locName", modelName);
-		form.add(field.add(new AttributeModifier("onFocus", "clearMe(this);")));
+		form.add(field.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 		
 		//Contact Information
 		TextField<String> fieldMgrFirst = new TextField<String>("mgrNameFirst",
 				modelMgrNameFirst);
 		form.add(fieldMgrFirst
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> fieldMgrLast = new TextField<String>("mgrNameLast",
 				modelMgrNameLast);
 		form.add(fieldMgrLast
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> priPhArea = new TextField<String>("priPhArea",
 				modelPriPhArea);
 		form.add(priPhArea
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> priPhExchange = new TextField<String>("priPhExchange",
 				modelPriPhExchange);
 		form.add(priPhExchange
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> priPhSuffix = new TextField<String>("priPhSuffix",
 				modelPriPhSuffix);
 		form.add(priPhSuffix
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> priPhExtension = new TextField<String>("priPhExtension",
 				modelPriPhExtension);
 		form.add(priPhExtension
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> secPhArea = new TextField<String>("secPhArea",
 				modelSecPhArea);
 		form.add(secPhArea
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> secPhExchange = new TextField<String>("secPhExchange",
 				modelSecPhExchange);
 		form.add(secPhExchange
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> secPhSuffix = new TextField<String>("secPhSuffix",
 				modelSecPhSuffix);
 		form.add(secPhSuffix
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> secPhExtension = new TextField<String>("secPhExtension",
 				modelSecPhExtension);
 		form.add(secPhExtension
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearclearFormFieldMe(this);")));
 
 		//Address
 		TextField<String> fieldNum = new TextField<String>("locAddrNum", modelNum);
-		form.add(fieldNum.add(new AttributeModifier("onFocus", "clearMe(this);")));
+		form.add(fieldNum.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> fieldStreet = new TextField<String>("locAddrStreet",
 				modelStreet);
-		form.add(fieldStreet.add(new AttributeModifier("onFocus",
-				"clearMe(this);")));
+		form.add(fieldStreet.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> fieldApt = new TextField<String>("locAddrApt", modelApt);
 		form.add(fieldApt.add(new AttributeModifier("onFocus", "clearMe(this);")));
@@ -175,17 +179,21 @@ public class AddLocation extends BasePage
 		TextField<String> fieldCity = new TextField<String>("locAddrCity",
 				modelCity);
 		form.add(fieldCity
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		
+		EmailTextField fieldEmail = new EmailTextField("emailAddr", modelEmailAddress);
+		form.add(fieldEmail.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		
 
 		ChoiceRenderer<StateSelectOption> choiceRenderer = new ChoiceRenderer<StateSelectOption>("value","key");
 		DropDownChoice<StateSelectOption> fieldState = new DropDownChoice<StateSelectOption>(
 				"locAddrState", new PropertyModel<StateSelectOption>(this, "selectedState"), stateChoiceModel, choiceRenderer );
 		form.add(fieldState
-				.add(new AttributeModifier("onFocus", "clearMe(this);")));
+				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 		
 
 		TextField<String> fieldZip = new TextField<String>("locAddrZip", modelZip);
-		form.add(fieldZip.add(new AttributeModifier("onFocus", "clearMe(this);")));
+		form.add(fieldZip.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 	}
 }

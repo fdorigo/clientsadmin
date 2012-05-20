@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.protocol.http.WebApplication;
 
 import com.fdorigo.igadmin.app.forms.AddLocation;
+import com.fdorigo.igadmin.app.forms.AddTrainer;
 
 
 /**
@@ -21,9 +22,9 @@ public class WicketApplication extends WebApplication
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
 	@Override
-	public Class<AddLocation> getHomePage()
+	public Class<AddTrainer> getHomePage()
 	{
-		return AddLocation.class;
+		return AddTrainer.class;
 	}
 
 	/**

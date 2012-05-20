@@ -1,16 +1,18 @@
 package com.fdorigo.igadmin.persistent;
 
+import java.io.Serializable;
+
 import org.apache.log4j.Logger;
 
-public class Phone
+public class Phone implements Serializable
 {
+	private static final long serialVersionUID = -7227906431599297832L;
 	private static final String COMPONENTS_DELIMITER = ":";
 	private static final Logger LOG = Logger.getLogger(Phone.class);
 	private String area;
 	private String exchange;
 	private String suffix;
 	private String extension;
-	private String dbString;
 
 	public Phone()
 	{
@@ -50,16 +52,14 @@ public class Phone
 			this.suffix = components[2];
 		}
 
-		if (components.length > 0 && components[3] != null
-				&& components[3].length() > 0)
+		if (components.length > 0 && components[3] != null && components[3].length() > 0)
 		{
 			this.extension = components[3];
 		}
 
-		LOG.trace("Created phone object " + this.toString() + ", using string: "
-				+ phone);
+		LOG.trace("Created phone object " + this.toString() + ", using string: " + phone);
 	}
-	
+
 	public String getDbString()
 	{
 		StringBuilder sb = new StringBuilder();
@@ -68,12 +68,13 @@ public class Phone
 		sb.append(this.exchange);
 		sb.append(COMPONENTS_DELIMITER);
 		sb.append(this.suffix);
+
 		if (this.extension != null && this.extension.length() > 0)
 		{
 			sb.append(COMPONENTS_DELIMITER);
 			sb.append(this.extension);
 		}
-		
+
 		return sb.toString();
 	}
 
@@ -137,5 +138,4 @@ public class Phone
 	{
 		this.extension = extension;
 	}
-
 }

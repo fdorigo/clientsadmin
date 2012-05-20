@@ -1,30 +1,35 @@
 <html>
-
 <wicket:extend>
 	<div id="stylized">
 
 		<form wicket:id="form">
 			<fieldset>
-				<h1>Add Location</h1>
-				<p>Add a new location to the database</p>
+				<h1>Add Trainer</h1>
+				<p>Add a new trainer to the database</p>
 
 				<div class="form_input_line">
 					<label>Name 
-					<span class="small">Specify a location name</span>
+					<span class="small">First name</span>
 					</label> 
-					<input type="text" wicket:id="locName" /> 
+					<input type="text" wicket:id="nameFirst" /> 
 				</div>
 
 				<div class="form_input_line">
-					<label>Manager Contact 
-					<span class="small">Specify the manager name</span>
+					<label>&nbsp; 
+					<span class="small">Middle name</span>
 					</label> 
-					<input type="text" wicket:id="mgrNameFirst" /> 
-					<input type="text" wicket:id="mgrNameLast" /> 
+					<input type="text" wicket:id="nameMiddle" /> 
 				</div>
-				
+
 				<div class="form_input_line">
 					<label>&nbsp; 
+					<span class="small">Last name</span>
+					</label> 
+					<input type="text" wicket:id="nameLast" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>Contact Information 
 					<span class="small">Primary phone</span>
 					</label> 
 					<input class="phAre" maxlength="3" style="width:40px;" type="text" wicket:id="priPhArea" /> <span class="phoneSep">&mdash;</span>
@@ -47,29 +52,37 @@
 					<label>&nbsp; 
 					<span class="small">email address</span>
 					</label> 
-					<input maxlength="100" style="width:200px;" type="email" wicket:id="emailAddr" /> 
+					<input maxlength="100" style="width:200px;" type="email" wicket:id="emailAddress" /> 
 				</div>
 
 				<div class="form_input_line">				
 					<label>Address 
 						<span class="small">Specify the location address</span>
 					</label> 
-					<input style="width:80px;" type="text" wicket:id="locAddrNum" /> 
-					<input style="width:260px;" type="text" wicket:id="locAddrStreet" /> 
-					<input style="width:80px;" type="text" wicket:id="locAddrApt" /> 
+					<input style="width:80px;" type="text" wicket:id="addressNum" /> 
+					<input style="width:260px;" type="text" wicket:id="addressStreet" /> 
+					<input style="width:80px;" type="text" wicket:id="addressApt" /> 
 				</div>
 
 				<div class="form_input_line">
 					<label>
 						&nbsp;
 					</label>				
-					<input style="width:170px;" type="text" wicket:id="locAddrCity" /> 
-					<select style="width:170px;" type="text" wicket:id="locAddrState"></select> 
-					<input style="width:86px;" type="text" wicket:id="locAddrZip" />
+					<input style="width:170px;" type="text" wicket:id="addressCity" /> 
+					<select style="width:170px;" type="text" wicket:id="addressState"></select> 
+					<input style="width:86px;" type="text" wicket:id="addressZip" />
 				</div>
 
 				<div class="form_input_line">
-					<input class="submitButton" type="submit" value="Add Location" />
+					<label>
+						Compensation
+						<span class="small">Specify the compensation rate</span>
+					</label>				
+					<input style="width:170px;" type="text" wicket:id="compRate" /> 
+				</div>
+
+				<div class="form_input_line">
+					<input class="submitButton" type="submit" value="Add Trainer" />
 				</div>				
 			</fieldset>
 		</form>

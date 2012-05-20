@@ -1,9 +1,12 @@
 package com.fdorigo.igadmin.persistent;
 
+import java.io.Serializable;
+
 import com.fdorigo.igadmin.interfaces.IAddress;
 
-public class Address implements IAddress
+public class Address implements IAddress, Serializable
 {
+	private static final long serialVersionUID = 2927546384466348849L;
 	private static final String BLANKSP = " ";
 	private static final String COMMASP = ", ";
 	
@@ -35,11 +38,12 @@ public class Address implements IAddress
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append(this.number + BLANKSP);
-		sb.append(this.street + BLANKSP);
+		sb.append(this.street);
 		
 		if (this.apt != null && this.apt.length() > 0) 
 		{
-			sb.append(this.apt + BLANKSP);
+			sb.append(BLANKSP);
+			sb.append(this.apt);
 		}
 		
 		sb.append(COMMASP + this.city + COMMASP);
