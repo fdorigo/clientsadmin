@@ -11,20 +11,19 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
-import com.fdorigo.igadmin.app.BasePage;
 import com.fdorigo.igadmin.app.forms.utils.FormUtils;
 import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
 import com.fdorigo.igadmin.model.DatabaseBridge;
 import com.fdorigo.igadmin.persistent.Address;
 import com.fdorigo.igadmin.persistent.Location;
-import com.fdorigo.igadmin.persistent.Trainer;
 
-public class AddLocation extends BasePage
+public class AddLocation extends Panel
 {
 	private static final long serialVersionUID = 3695907416548135080L;
 	private static final Logger LOG = Logger.getLogger(AddLocation.class);
@@ -41,8 +40,9 @@ public class AddLocation extends BasePage
 		this.selectedState = selectedState;
 	}
 
-	public AddLocation()
+	public AddLocation(String panelId)
 	{
+		super(panelId);
 		init();
 	}
 
@@ -89,7 +89,7 @@ public class AddLocation extends BasePage
 		Form<Void> form = new Form<Void>("form") {
 			private static final long serialVersionUID = 709544921769281327L;
 
-			@Override
+			@Override	
 			protected void onSubmit()
 			{
 				LOG.debug("AddLocation: " + modelName.getObject());

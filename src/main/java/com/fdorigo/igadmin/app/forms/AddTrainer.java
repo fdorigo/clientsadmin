@@ -11,21 +11,20 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
-import com.fdorigo.igadmin.app.BasePage;
 import com.fdorigo.igadmin.app.forms.utils.FormUtils;
 import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
 import com.fdorigo.igadmin.model.DatabaseBridge;
-import com.fdorigo.igadmin.persistent.Address;
 import com.fdorigo.igadmin.persistent.Phone;
 import com.fdorigo.igadmin.persistent.Trainer;
 
-public class AddTrainer extends BasePage
+public class AddTrainer extends Panel
 {
 	private static final long serialVersionUID = -2334745566004580326L;
 	private static final Logger LOG = Logger.getLogger(AddTrainer.class);
@@ -34,8 +33,9 @@ public class AddTrainer extends BasePage
 	
 	private StateSelectOption selectedState;
 
-	public AddTrainer()
+	public AddTrainer(String panelId)
 	{
+		super(panelId);
 		trainerModel = context.newObject(Trainer.class);
 		initComponents();
 	}
