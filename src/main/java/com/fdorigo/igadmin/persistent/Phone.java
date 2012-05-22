@@ -9,21 +9,14 @@ public class Phone implements Serializable
 	private static final long serialVersionUID = -7227906431599297832L;
 	private static final String COMPONENTS_DELIMITER = ":";
 	private static final Logger LOG = Logger.getLogger(Phone.class);
-	private String area;
-	private String exchange;
-	private String suffix;
+	
+	private String number;
 	private String extension;
 
-	public Phone()
-	{
-		this("555", "555", "5555", "5");
-	}
 
-	public Phone(String area, String exchange, String suffix, String extension)
+	public Phone(String number, String extension)
 	{
-		this.area = area;
-		this.exchange = exchange;
-		this.suffix = suffix;
+		this.number = number;
 		this.extension = extension;
 	}
 

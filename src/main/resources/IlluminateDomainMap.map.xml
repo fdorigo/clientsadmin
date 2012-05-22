@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
   project-version="3.0.0.1">
 	<property name="defaultPackage" value="com.fdorigo.igadmin.persistent"/>
-	<db-entity name="CLIENT">
+	<db-entity name="CLIENT" schema="igadmin3">
 		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
 		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
 		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>
@@ -23,7 +23,7 @@
 		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
 		<db-attribute name="TRAINER_ID" type="INTEGER"/>
 	</db-entity>
-	<db-entity name="LOCATION">
+	<db-entity name="LOCATION" schema="igadmin3">
 		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
 		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
 		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>
@@ -39,7 +39,7 @@
 		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
 		<db-attribute name="TRAINER_ID" type="INTEGER"/>
 	</db-entity>
-	<db-entity name="TRAINER">
+	<db-entity name="TRAINER" schema="igadmin3">
 		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
 		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
 		<db-attribute name="ADDRESS_NUM" type="VARCHAR" length="20"/>

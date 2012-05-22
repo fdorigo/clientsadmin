@@ -11,12 +11,15 @@ import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.EmailTextField;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.validation.validator.MaximumValidator;
+import org.apache.wicket.validation.validator.MinimumValidator;
 
 import com.fdorigo.igadmin.app.forms.utils.FormUtils;
 import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
@@ -66,6 +69,8 @@ public class AddTrainer extends Panel
 			}
 		};
 
+		add(new FeedbackPanel("feedback"));
+		
 		Form<Trainer> form = new Form<Trainer>("form", new CompoundPropertyModel<Trainer>(trainerModel)) {
 			private static final long serialVersionUID = 1617572834759513718L;
 
@@ -136,6 +141,9 @@ public class AddTrainer extends Panel
 
 		TextField<Integer> payRate = new TextField<Integer>(Trainer.COMP_RATE_PROPERTY);
 		form.add(payRate.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		payRate.add(new MinimumValidator<Integer>(0));
+		payRate.add(new MaximumValidator<Integer>(100));
+		
 	}
 	
 	public StateSelectOption getSelectedState()

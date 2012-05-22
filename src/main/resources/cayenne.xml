@@ -7,6 +7,11 @@
 		 datasource="IlluminateDomainNode.driver.xml"
 		 factory="org.apache.cayenne.conf.DriverDataSourceFactory"
 		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy">
+	 </node>
+	<node name="IlluminateMySQLDomainNode"
+		 datasource="IlluminateMySQLDomainNode.driver.xml"
+		 factory="org.apache.cayenne.conf.DriverDataSourceFactory"
+		 schema-update-strategy="org.apache.cayenne.access.dbsync.CreateIfNoSchemaStrategy">
 			<map-ref name="IlluminateDomainMap"/>
 	 </node>
 </domain>
