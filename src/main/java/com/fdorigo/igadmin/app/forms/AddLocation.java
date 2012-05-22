@@ -27,7 +27,7 @@ public class AddLocation extends Panel
 {
 	private static final long serialVersionUID = 3695907416548135080L;
 	private static final Logger LOG = Logger.getLogger(AddLocation.class);
-	
+
 	private StateSelectOption selectedState;
 
 	public StateSelectOption getSelectedState()
@@ -55,7 +55,7 @@ public class AddLocation extends Panel
 		final Model<String> modelApt = new Model<String>("Unit #");
 		final Model<String> modelCity = new Model<String>("City");
 		final Model<String> modelZip = new Model<String>("ZIP");
-		
+
 		final Model<String> modelMgrNameFirst = new Model<String>("First Name");
 		final Model<String> modelMgrNameLast = new Model<String>("Last Name");
 
@@ -70,13 +70,12 @@ public class AddLocation extends Panel
 		final Model<String> modelSecPhExtension = new Model<String>("ext");
 
 		final Model<String> modelEmailAddress = new Model<String>("manager@email.com");
-		
+
 		final List<StateSelectOption> listOfStates = new ArrayList<StateSelectOption>();
-		
+
 		FormUtils.initStateList(listOfStates);
 
-		final IModel<List<StateSelectOption>> stateChoiceModel = new AbstractReadOnlyModel<List<StateSelectOption>>() 
-		{
+		final IModel<List<StateSelectOption>> stateChoiceModel = new AbstractReadOnlyModel<List<StateSelectOption>>() {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -89,15 +88,12 @@ public class AddLocation extends Panel
 		Form<Void> form = new Form<Void>("form") {
 			private static final long serialVersionUID = 709544921769281327L;
 
-			@Override	
+			@Override
 			protected void onSubmit()
 			{
 				LOG.debug("AddLocation: " + modelName.getObject());
 
-				Address locAddress = new Address(modelNum.getObject(),
-						modelStreet.getObject(), modelApt.getObject(),
-						modelCity.getObject(), selectedState.getKey(),
-						modelZip.getObject());
+				Address locAddress = new Address(modelStreet.getObject(), modelCity.getObject(), selectedState.getKey(), modelZip.getObject());
 
 				LOG.debug("Saving objcet");
 				DataContext context = DatabaseBridge.getContext();
@@ -110,87 +106,61 @@ public class AddLocation extends Panel
 		};
 		add(form);
 
-		//Location Name
+		// Location Name
 		TextField<String> field = new TextField<String>("locName", modelName);
 		form.add(field.add(new AttributeModifier("onFocus", "clearFormField(this);")));
-		
-		//Contact Information
-		TextField<String> fieldMgrFirst = new TextField<String>("mgrNameFirst",
-				modelMgrNameFirst);
-		form.add(fieldMgrFirst
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> fieldMgrLast = new TextField<String>("mgrNameLast",
-				modelMgrNameLast);
-		form.add(fieldMgrLast
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		// Contact Information
+		TextField<String> fieldMgrFirst = new TextField<String>("mgrNameFirst", modelMgrNameFirst);
+		form.add(fieldMgrFirst.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> priPhArea = new TextField<String>("priPhArea",
-				modelPriPhArea);
-		form.add(priPhArea
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> fieldMgrLast = new TextField<String>("mgrNameLast", modelMgrNameLast);
+		form.add(fieldMgrLast.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> priPhExchange = new TextField<String>("priPhExchange",
-				modelPriPhExchange);
-		form.add(priPhExchange
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> priPhArea = new TextField<String>("priPhArea", modelPriPhArea);
+		form.add(priPhArea.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> priPhSuffix = new TextField<String>("priPhSuffix",
-				modelPriPhSuffix);
-		form.add(priPhSuffix
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> priPhExchange = new TextField<String>("priPhExchange", modelPriPhExchange);
+		form.add(priPhExchange.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> priPhExtension = new TextField<String>("priPhExtension",
-				modelPriPhExtension);
-		form.add(priPhExtension
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> priPhSuffix = new TextField<String>("priPhSuffix", modelPriPhSuffix);
+		form.add(priPhSuffix.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> secPhArea = new TextField<String>("secPhArea",
-				modelSecPhArea);
-		form.add(secPhArea
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> priPhExtension = new TextField<String>("priPhExtension", modelPriPhExtension);
+		form.add(priPhExtension.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> secPhExchange = new TextField<String>("secPhExchange",
-				modelSecPhExchange);
-		form.add(secPhExchange
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> secPhArea = new TextField<String>("secPhArea", modelSecPhArea);
+		form.add(secPhArea.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> secPhSuffix = new TextField<String>("secPhSuffix",
-				modelSecPhSuffix);
-		form.add(secPhSuffix
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		TextField<String> secPhExchange = new TextField<String>("secPhExchange", modelSecPhExchange);
+		form.add(secPhExchange.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> secPhExtension = new TextField<String>("secPhExtension",
-				modelSecPhExtension);
-		form.add(secPhExtension
-				.add(new AttributeModifier("onFocus", "clearclearFormFieldMe(this);")));
+		TextField<String> secPhSuffix = new TextField<String>("secPhSuffix", modelSecPhSuffix);
+		form.add(secPhSuffix.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		//Address
+		TextField<String> secPhExtension = new TextField<String>("secPhExtension", modelSecPhExtension);
+		form.add(secPhExtension.add(new AttributeModifier("onFocus", "clearclearFormFieldMe(this);")));
+
+		// Address
 		TextField<String> fieldNum = new TextField<String>("locAddrNum", modelNum);
 		form.add(fieldNum.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
-		TextField<String> fieldStreet = new TextField<String>("locAddrStreet",
-				modelStreet);
+		TextField<String> fieldStreet = new TextField<String>("locAddrStreet", modelStreet);
 		form.add(fieldStreet.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> fieldApt = new TextField<String>("locAddrApt", modelApt);
 		form.add(fieldApt.add(new AttributeModifier("onFocus", "clearMe(this);")));
 
-		TextField<String> fieldCity = new TextField<String>("locAddrCity",
-				modelCity);
-		form.add(fieldCity
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
-		
+		TextField<String> fieldCity = new TextField<String>("locAddrCity", modelCity);
+		form.add(fieldCity.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+
 		EmailTextField fieldEmail = new EmailTextField("emailAddr", modelEmailAddress);
 		form.add(fieldEmail.add(new AttributeModifier("onFocus", "clearFormField(this);")));
-		
 
-		ChoiceRenderer<StateSelectOption> choiceRenderer = new ChoiceRenderer<StateSelectOption>("value","key");
-		DropDownChoice<StateSelectOption> fieldState = new DropDownChoice<StateSelectOption>(
-				"locAddrState", new PropertyModel<StateSelectOption>(this, "selectedState"), stateChoiceModel, choiceRenderer );
-		form.add(fieldState
-				.add(new AttributeModifier("onFocus", "clearFormField(this);")));
-		
+		ChoiceRenderer<StateSelectOption> choiceRenderer = new ChoiceRenderer<StateSelectOption>("value", "key");
+		DropDownChoice<StateSelectOption> fieldState = new DropDownChoice<StateSelectOption>("locAddrState", new PropertyModel<StateSelectOption>(this, "selectedState"), stateChoiceModel,
+				choiceRenderer);
+		form.add(fieldState.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 
 		TextField<String> fieldZip = new TextField<String>("locAddrZip", modelZip);
 		form.add(fieldZip.add(new AttributeModifier("onFocus", "clearFormField(this);")));

@@ -57,23 +57,6 @@
 					<input style="width:80px;" type="text" wicket:id="locAddrApt" /> 
 				</div>
 
-				
-				<script>
-				function formatPhone(elem) {
-					var phonenum = elem.value;
-				    var regexObj = /^(?:\+?1[-. ]?)?(?:\(?([0-9]{3})\)?[-. ]?)?([0-9]{3})[-. ]?([0-9]{4})$/;
-				    if (regexObj.test(phonenum)) {
-				        var parts = phonenum.match(regexObj);
-				        var phone = "";
-				        if (parts[1]) { phone += "+1 (" + parts[1] + ") "; }
-				        phone += parts[2] + "-" + parts[3];
-				        elem.value = phone;
-				    }
-				    else {
-				        elem.value = 'invalid';
-				    }
-				}
-				</script>
 				<div class="form_input_line">
 					<label>
 						&nbsp;

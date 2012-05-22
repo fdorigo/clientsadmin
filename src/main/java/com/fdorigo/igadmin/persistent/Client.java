@@ -14,7 +14,7 @@ public class Client extends _Client
 	private static final Logger LOG = Logger.getLogger(Client.class);
 	private static final long serialVersionUID = 4633162388388367972L;
 	private Address address = null;
-	private Phone alternate = null;
+	private Phone secondary = null;
 	private Email email = null;
 	private Phone primary = null;
 
@@ -22,27 +22,25 @@ public class Client extends _Client
 	{
 		return super.getTrainer().getName();
 	}
-	
+
 	public Address getAddress()
 	{
 		if (address == null)
 		{
-			address = new Address(getAddressNum(), getAddressStreet(),
-					getAddressApt(), getAddressCity(), getAddressState(),
-					getAddressZip());
+			address = new Address(getAddressStreet(), getAddressCity(), getAddressState(), getAddressZip());
 		}
 
 		return address;
 	}
 
-	public Phone getAlternate() 
+	public Phone getSecondary()
 	{
-		if (alternate == null) 
+		if (secondary == null)
 		{
-			alternate = new Phone(super.getPhoneSecondary());
+			secondary = new Phone(super.getPhoneSecondary());
 		}
-		
-		return alternate;
+
+		return secondary;
 	}
 
 	@Override
@@ -52,30 +50,28 @@ public class Client extends _Client
 		{
 			email = new Email(super.getEmailAddress());
 		}
-		
+
 		return super.getEmailAddress();
 	}
-	
+
 	public String getName()
 	{
 		return getNameFirst() + " " + getNameLast();
 	}
 
-	public Phone getPrimary() 
+	public Phone getPrimary()
 	{
-		if (primary == null) 
+		if (primary == null)
 		{
 			primary = new Phone(super.getPhonePrimary());
 		}
-		
+
 		return primary;
 	}
-	
+
 	public void setAddress(Address a)
 	{
-		super.setAddressNum(a.getNumber());
 		super.setAddressStreet(a.getStreet());
-		super.setAddressApt(a.getApt());
 		super.setAddressCity(a.getCity());
 		super.setAddressState(a.getState());
 		super.setAddressZip(a.getZip());
@@ -83,10 +79,10 @@ public class Client extends _Client
 		address = a;
 	}
 
-	public void setAlternate(Phone phoneAlt)
+	public void setSecondary(Phone phoneAlternate)
 	{
-		super.setPhoneSecondary(phoneAlt.getDbString());
-		alternate = phoneAlt;
+		super.setPhoneSecondary(phoneAlternate.toString());
+		secondary = phoneAlternate;
 	}
 
 	/**
@@ -97,20 +93,15 @@ public class Client extends _Client
 		if (yearMonthDay == null)
 		{
 			setDateJoined(null);
-		} 
-		else
+		} else
 		{
 			Date date;
 			try
 			{
-				date = new SimpleDateFormat(DEFAULT_DATE_FORMAT)
-						.parse(yearMonthDay);
-			} 
-			catch (ParseException e)
+				date = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(yearMonthDay);
+			} catch (ParseException e)
 			{
-				throw new IllegalArgumentException(
-						"A date argument must be in format '" + DEFAULT_DATE_FORMAT
-								+ "': " + yearMonthDay);
+				throw new IllegalArgumentException("A date argument must be in format '" + DEFAULT_DATE_FORMAT + "': " + yearMonthDay);
 			}
 
 			setDateJoined(date);
@@ -125,20 +116,15 @@ public class Client extends _Client
 		if (yearMonthDay == null)
 		{
 			setDateBirth(null);
-		} 
-		else
+		} else
 		{
 			Date date;
 			try
 			{
-				date = new SimpleDateFormat(DEFAULT_DATE_FORMAT)
-						.parse(yearMonthDay);
-			} 
-			catch (ParseException e)
+				date = new SimpleDateFormat(DEFAULT_DATE_FORMAT).parse(yearMonthDay);
+			} catch (ParseException e)
 			{
-				throw new IllegalArgumentException(
-						"A date argument must be in format '" + DEFAULT_DATE_FORMAT
-								+ "': " + yearMonthDay);
+				throw new IllegalArgumentException("A date argument must be in format '" + DEFAULT_DATE_FORMAT + "': " + yearMonthDay);
 			}
 
 			setDateBirth(date);
@@ -153,7 +139,7 @@ public class Client extends _Client
 
 	public void setPrimary(Phone phonePrimary)
 	{
-		super.setPhonePrimary(phonePrimary.getDbString());
+		super.setPhonePrimary(phonePrimary.toString());
 		primary = phonePrimary;
 	}
 
@@ -165,10 +151,10 @@ public class Client extends _Client
 		sb.append(getName());
 		sb.append("; Address: " + address);
 		sb.append("; Primary phone: " + primary);
-		sb.append("; Alternate phone: " + alternate);
+		sb.append("; Alternate phone: " + secondary);
 		sb.append("; Trained by: " + this.getTrainerName());
 		sb.append("; Trained at: " + this.getLocation().getName());
-		
+
 		return super.toString();
 	}
 }

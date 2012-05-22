@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
 
+#feedback {
+	position : absolute;
+	float : right;
+	margin-top  : 80px;
+	margin-left : 500px;
+	width : 250px;
+	list-style : none; 
+}
+
+
 fieldset {
 	
 }
@@ -8,6 +18,15 @@ fieldset {
 	border : solid 2px #b7ddf2;
 	font-size : 12px;
 	background : #ebf4fb;
+}
+
+
+#stylized .darker {
+	color : #000;
+}
+
+#stylized .lighter {
+	color : #DDD;
 }
 
 #stylized h1 {
@@ -52,7 +71,8 @@ fieldset {
 	font-size: 12px;
 	padding: 4px 2px;
 	border: solid 1px #aacfe4;
-	width: 200px;
+	width: 300px;
+	color : #aaa;
 	margin: 2px 0 20px 10px;
 }
 

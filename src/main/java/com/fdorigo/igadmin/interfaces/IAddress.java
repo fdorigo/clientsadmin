@@ -7,14 +7,8 @@ package com.fdorigo.igadmin.interfaces;
  */
 public interface IAddress
 {
-	public String getNumber();
-	public void setNumber(String number);
-
 	public String getStreet();
 	public void setStreet(String streety);
-
-	public String getApt();
-	public void setApt(String apt);
 
 	public String getCity();
 	public void setCity(String city);

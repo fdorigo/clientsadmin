@@ -34,7 +34,7 @@ public class Trainer extends _Trainer
 	{
 		if (address == null)
 		{
-			address = new Address(super.getAddressNum(), super.getAddressStreet(), super.getAddressApt(), super.getAddressCity(), super.getAddressState(), super.getAddressZip());
+			address = new Address(super.getAddressStreet(), super.getAddressCity(), super.getAddressState(), super.getAddressZip());
 		}
 		
 		return address;
@@ -64,7 +64,7 @@ public class Trainer extends _Trainer
 	{
 		if (secondary == null)
 		{
-			secondary = new Phone(super.getPhonePrimary());
+			secondary = new Phone(super.getPhoneSecondary());
 		}
 
 		return secondary;
@@ -74,6 +74,4 @@ public class Trainer extends _Trainer
 	{
 		this.secondary = secondary;
 	}
-	
-	
 }
