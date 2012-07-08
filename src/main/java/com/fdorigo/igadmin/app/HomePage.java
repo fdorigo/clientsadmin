@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+import com.fdorigo.igadmin.app.forms.AddClient;
 import com.fdorigo.igadmin.app.forms.AddLocation;
 import com.fdorigo.igadmin.app.forms.AddTrainer;
 
@@ -51,6 +52,17 @@ public class HomePage extends BasePage
 			public WebMarkupContainer getPanel(String panelId)
 			{
 				return new AddTrainer(panelId);
+			}
+		});
+
+		tabs.add(new AbstractTab(new Model<String>("Add Client")) 
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public WebMarkupContainer getPanel(String panelId)
+			{
+				return new AddClient(panelId);
 			}
 		});
 

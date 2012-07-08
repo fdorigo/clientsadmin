@@ -22,10 +22,13 @@ import org.apache.wicket.validation.validator.MaximumValidator;
 import org.apache.wicket.validation.validator.MinimumValidator;
 
 import com.fdorigo.igadmin.app.forms.utils.FormUtils;
+import com.fdorigo.igadmin.app.forms.utils.LocationSelectOption;
 import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
 import com.fdorigo.igadmin.model.DatabaseBridge;
+import com.fdorigo.igadmin.persistent.Location;
 import com.fdorigo.igadmin.persistent.Phone;
 import com.fdorigo.igadmin.persistent.Trainer;
+import com.fdorigo.igadmin.persistent.utils.DBUtils;
 
 public class AddTrainer extends Panel
 {
@@ -34,7 +37,9 @@ public class AddTrainer extends Panel
 	private final Trainer trainerModel;
 	private final DataContext context = DatabaseBridge.getContext();
 	private StateSelectOption selectedState;
+	private LocationSelectOption selectedLocation;
 	private final List<StateSelectOption> listOfStates = new ArrayList<StateSelectOption>();
+	private final List<LocationSelectOption> listOfLocations = new ArrayList<LocationSelectOption>();
 
 	public AddTrainer(String panelId)
 	{
@@ -67,6 +72,10 @@ public class AddTrainer extends Panel
 			}
 		};
 
+		Location l = context.newObject(Location.class);
+		
+		FormUtils.initLocationList(listOfLocations, DBUtils.get().getList(l));
+		
 		add(form);
 		
 		initNameFields(form);
@@ -121,6 +130,21 @@ public class AddTrainer extends Panel
 			}
 		};
 
+		final IModel<List<LocationSelectOption>> locationChoiceModel = new AbstractReadOnlyModel<List<LocationSelectOption>>() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public List<LocationSelectOption> getObject()
+			{
+				return listOfLocations;
+			}
+		};
+
+		ChoiceRenderer<LocationSelectOption> choiceLocationRenderer = new ChoiceRenderer<LocationSelectOption>("value", "key");
+		DropDownChoice<LocationSelectOption> fieldLocation = new DropDownChoice<LocationSelectOption>(Trainer.LOCATION_PROPERTY,  new PropertyModel<LocationSelectOption>(this, "selectedState"), locationChoiceModel, choiceLocationRenderer);
+		form.add(fieldLocation.add(new AttributeModifier("onFocus", "clearFormField(this);")));
+		fieldLocation.setRequired(true);
+
 		TextField<String> addrStreet = new TextField<String>(Trainer.ADDRESS_STREET_PROPERTY);
 		form.add(addrStreet.add(new AttributeModifier("onFocus", "clearFormField(this);")));
 		TextField<String> addrCity = new TextField<String>(Trainer.ADDRESS_CITY_PROPERTY);
@@ -146,5 +170,15 @@ public class AddTrainer extends Panel
 	public void setSelectedState(StateSelectOption selectedState)
 	{
 		this.selectedState = selectedState;
+	}
+
+	public LocationSelectOption getSelectedLocation()
+	{
+		return selectedLocation;
+	}
+
+	public void setSelectedLocation(LocationSelectOption selectedLocation)
+	{
+		this.selectedLocation = selectedLocation;
 	}
 }

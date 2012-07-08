@@ -1,14 +1,23 @@
 package com.fdorigo.igadmin.persistent;
 
-public class Email
-{
-	private String email;
+import java.io.Serializable;
 
-	public Email(String e)
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
+import org.apache.log4j.Logger;
+
+public class Email implements Serializable
+{
+	private static final long serialVersionUID = -4438536682546580324L;
+	private static final Logger LOG = Logger.getLogger(Email.class);
+	private String email = "";
+
+	public Email(String em)
 	{
-		if (isValid(email))
+		if (em != null && isValid(em))
 		{
-			this.email = email;
+			this.email = em;
 		}
 	}
 
@@ -17,19 +26,29 @@ public class Email
 		return email;
 	}
 
-	public void setEmail(String email)
+	public void setEmail(String em)
 	{
-		if (isValid(email))
+		if (em != null && isValid(em))
 		{
-			this.email = email;
+			this.email = em;
 		}
 	}
 
-	/**
-	 * TODO implement email validator
-	 */
-	private boolean isValid(String email)
+	private boolean isValid(String em)
 	{
-		return true;
+		boolean result = true;
+		
+		try
+		{
+			InternetAddress emailAddr = new InternetAddress(em);
+			emailAddr.validate();
+		} 
+		catch (AddressException ex)
+		{
+			LOG.warn("Email is invalid: " + em);
+			result = false;
+		}
+		
+		return result;
 	}
 }

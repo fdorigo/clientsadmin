@@ -3,9 +3,13 @@ package com.fdorigo.igadmin.persistent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import org.apache.cayenne.access.DataContext;
+import org.apache.cayenne.query.SelectQuery;
 import org.apache.log4j.Logger;
 
+import com.fdorigo.igadmin.model.DatabaseBridge;
 import com.fdorigo.igadmin.persistent.auto._Client;
 
 public class Client extends _Client
@@ -20,7 +24,15 @@ public class Client extends _Client
 
 	public String getTrainerName()
 	{
-		return super.getTrainer().getName();
+		String name = "no trainer set";
+		final Trainer t = super.getTrainer();
+
+		if (t != null)
+		{
+			name = t.getName();
+		}
+
+		return name;
 	}
 
 	public Address getAddress()
@@ -153,8 +165,16 @@ public class Client extends _Client
 		sb.append("; Primary phone: " + primary);
 		sb.append("; Alternate phone: " + secondary);
 		sb.append("; Trained by: " + this.getTrainerName());
-		sb.append("; Trained at: " + this.getLocation().getName());
 
+		if (this.getLocation() != null)
+		{
+			sb.append("; Trained at: " + this.getLocation().getName());
+		}
+		else 
+		{
+			sb.append("; Trained at: location not set");
+		}
+		
 		return super.toString();
 	}
 }

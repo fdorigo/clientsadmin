@@ -2,13 +2,15 @@ package com.fdorigo.igadmin.app.forms.utils;
 
 import java.io.Serializable;
 
-public class StateSelectOption implements Serializable, ISelectOption
+import com.fdorigo.igadmin.persistent.Location;
+
+public class LocationSelectOption implements Serializable
 {
 	private static final long serialVersionUID = -2941979778049979428L;
 	private String key;
 	private String value;
 	
-	public StateSelectOption(String key, String value)
+	public LocationSelectOption(String key, String value)
 	{
 		this.key = key;
 		this.value = value;
@@ -33,4 +35,6 @@ public class StateSelectOption implements Serializable, ISelectOption
 	{
 		this.value = value;
 	}
+
+
 }

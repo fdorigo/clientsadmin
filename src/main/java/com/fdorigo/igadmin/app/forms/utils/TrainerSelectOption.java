@@ -2,7 +2,7 @@ package com.fdorigo.igadmin.app.forms.utils;
 
 import java.io.Serializable;
 
-public class TrainerSelectOption implements Serializable
+public class TrainerSelectOption implements Serializable, ISelectOption
 {
 	private static final long serialVersionUID = -2685493059404689141L;
 	private String key;

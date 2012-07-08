@@ -1,6 +1,5 @@
 package com.fdorigo.igadmin.app.forms.utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.cayenne.access.DataContext;
@@ -9,6 +8,7 @@ import org.apache.cayenne.exp.ExpressionParameter;
 import org.apache.cayenne.query.SelectQuery;
 
 import com.fdorigo.igadmin.model.DatabaseBridge;
+import com.fdorigo.igadmin.persistent.Location;
 import com.fdorigo.igadmin.persistent.Trainer;
 
 public class FormUtils
@@ -25,6 +25,14 @@ public class FormUtils
 		trainers = (List<Trainer>)context.performQuery(query);
 	}
 
+	public static void initLocationList(List<LocationSelectOption> locationList, List<Location> locations)
+	{
+		for (Location l : locations)
+		{
+			locationList.add(new LocationSelectOption(l.getName(), l.getName()));
+		}
+	}
+	
 	public static void initStateList(List<StateSelectOption> states)
 	{
 		states.add(new StateSelectOption("AL", "Alabama"));

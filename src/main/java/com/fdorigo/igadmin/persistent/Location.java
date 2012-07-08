@@ -26,5 +26,4 @@ public class Location extends _Location
 
 		address = a;
 	}
-
 }

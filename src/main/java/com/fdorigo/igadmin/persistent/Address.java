@@ -2,9 +2,7 @@ package com.fdorigo.igadmin.persistent;
 
 import java.io.Serializable;
 
-import com.fdorigo.igadmin.interfaces.IAddress;
-
-public class Address implements IAddress, Serializable
+public class Address implements Serializable
 {
 	private static final long serialVersionUID = 2927546384466348849L;
 	private static final String BLANKSP = " ";
