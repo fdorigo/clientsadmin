@@ -39,6 +39,22 @@
 		<db-attribute name="PHONE_SECONDARY" type="VARCHAR" length="20"/>
 		<db-attribute name="TRAINER_ID" type="INTEGER"/>
 	</db-entity>
+	<db-entity name="PACKAGE">
+		<db-attribute name="CLIENT_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="DATE" type="DATE" isMandatory="true"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="MAX_SESSIONS" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="PRICE" type="DOUBLE" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="SESSION">
+		<db-attribute name="CLIENT_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="DATE" type="DATE" isMandatory="true"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="PACKAGE_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="PRICE" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="TRAINER_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="TYPE" type="VARCHAR" isMandatory="true" length="100"/>
+	</db-entity>
 	<db-entity name="TRAINER" schema="igadmin3">
 		<db-attribute name="ADDRESS_APT" type="VARCHAR" length="20"/>
 		<db-attribute name="ADDRESS_CITY" type="VARCHAR" length="50"/>
@@ -87,6 +103,16 @@
 		<obj-attribute name="phoneSecondary" type="java.lang.String" db-attribute-path="PHONE_SECONDARY"/>
 		<obj-attribute name="trainerId" type="java.lang.Integer" db-attribute-path="TRAINER_ID"/>
 	</obj-entity>
+	<obj-entity name="Package" className="com.fdorigo.igadmin.persistent.Package" dbEntityName="PACKAGE">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="DATE"/>
+		<obj-attribute name="maxSessions" type="java.lang.Integer" db-attribute-path="MAX_SESSIONS"/>
+		<obj-attribute name="price" type="java.lang.Double" db-attribute-path="PRICE"/>
+	</obj-entity>
+	<obj-entity name="Session" className="com.fdorigo.igadmin.persistent.Session" dbEntityName="SESSION">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="DATE"/>
+		<obj-attribute name="price" type="java.lang.Double" db-attribute-path="PRICE"/>
+		<obj-attribute name="type" type="java.lang.String" db-attribute-path="TYPE"/>
+	</obj-entity>
 	<obj-entity name="Trainer" className="com.fdorigo.igadmin.persistent.Trainer" dbEntityName="TRAINER">
 		<obj-attribute name="addressApt" type="java.lang.String" db-attribute-path="ADDRESS_APT"/>
 		<obj-attribute name="addressCity" type="java.lang.String" db-attribute-path="ADDRESS_CITY"/>
@@ -105,14 +131,38 @@
 	<db-relationship name="location" source="CLIENT" target="LOCATION" toMany="false">
 		<db-attribute-pair source="LOCATION_ID" target="ID"/>
 	</db-relationship>
+	<db-relationship name="packages" source="CLIENT" target="PACKAGE" toMany="true">
+		<db-attribute-pair source="ID" target="CLIENT_ID"/>
+	</db-relationship>
+	<db-relationship name="sessions" source="CLIENT" target="SESSION" toMany="true">
+		<db-attribute-pair source="ID" target="CLIENT_ID"/>
+	</db-relationship>
 	<db-relationship name="trainer" source="CLIENT" target="TRAINER" toMany="false">
 		<db-attribute-pair source="TRAINER_ID" target="ID"/>
 	</db-relationship>
 	<db-relationship name="clients" source="LOCATION" target="CLIENT" toMany="true">
 		<db-attribute-pair source="ID" target="LOCATION_ID"/>
 	</db-relationship>
+	<db-relationship name="toTrainer" source="LOCATION" target="TRAINER" toMany="false">
+		<db-attribute-pair source="TRAINER_ID" target="LOCATION_ID"/>
+	</db-relationship>
 	<db-relationship name="trainers" source="LOCATION" target="TRAINER" toMany="true">
 		<db-attribute-pair source="ID" target="LOCATION_ID"/>
+	</db-relationship>
+	<db-relationship name="client" source="PACKAGE" target="CLIENT" toMany="false">
+		<db-attribute-pair source="CLIENT_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="sessions" source="PACKAGE" target="SESSION" toMany="true">
+		<db-attribute-pair source="ID" target="PACKAGE_ID"/>
+	</db-relationship>
+	<db-relationship name="client" source="SESSION" target="CLIENT" toMany="false">
+		<db-attribute-pair source="CLIENT_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="package" source="SESSION" target="PACKAGE" toMany="false">
+		<db-attribute-pair source="PACKAGE_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="toTrainer" source="SESSION" target="TRAINER" toMany="false">
+		<db-attribute-pair source="TRAINER_ID" target="ID"/>
 	</db-relationship>
 	<db-relationship name="clients" source="TRAINER" target="CLIENT" toMany="true">
 		<db-attribute-pair source="ID" target="TRAINER_ID"/>
@@ -120,10 +170,22 @@
 	<db-relationship name="location" source="TRAINER" target="LOCATION" toMany="false">
 		<db-attribute-pair source="LOCATION_ID" target="ID"/>
 	</db-relationship>
+	<db-relationship name="sessionArray" source="TRAINER" target="SESSION" toMany="true">
+		<db-attribute-pair source="ID" target="TRAINER_ID"/>
+	</db-relationship>
 	<obj-relationship name="location" source="Client" target="Location" deleteRule="Nullify" db-relationship-path="location"/>
+	<obj-relationship name="packages" source="Client" target="Package" deleteRule="Deny" db-relationship-path="packages"/>
+	<obj-relationship name="sessions" source="Client" target="Session" deleteRule="Deny" db-relationship-path="sessions"/>
 	<obj-relationship name="trainer" source="Client" target="Trainer" deleteRule="Nullify" db-relationship-path="trainer"/>
 	<obj-relationship name="clients" source="Location" target="Client" deleteRule="Deny" db-relationship-path="clients"/>
+	<obj-relationship name="toTrainer" source="Location" target="Trainer" deleteRule="Nullify" db-relationship-path="toTrainer"/>
 	<obj-relationship name="trainers" source="Location" target="Trainer" deleteRule="Deny" db-relationship-path="trainers"/>
+	<obj-relationship name="client" source="Package" target="Client" deleteRule="Nullify" db-relationship-path="client"/>
+	<obj-relationship name="sessions" source="Package" target="Session" deleteRule="Deny" db-relationship-path="sessions"/>
+	<obj-relationship name="client" source="Session" target="Client" deleteRule="Nullify" db-relationship-path="client"/>
+	<obj-relationship name="package" source="Session" target="Package" deleteRule="Nullify" db-relationship-path="package"/>
+	<obj-relationship name="toTrainer" source="Session" target="Trainer" deleteRule="Nullify" db-relationship-path="toTrainer"/>
 	<obj-relationship name="clients" source="Trainer" target="Client" deleteRule="Deny" db-relationship-path="clients"/>
 	<obj-relationship name="location" source="Trainer" target="Location" deleteRule="Nullify" db-relationship-path="location"/>
+	<obj-relationship name="sessionArray" source="Trainer" target="Session" deleteRule="Deny" db-relationship-path="sessionArray"/>
 </data-map>

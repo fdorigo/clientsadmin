@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.sourceforge.net/">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Log In</title>
+</head>
+
+<body>
+	<div id="feedback" wicket:id="feedback"></div>
+	<form wicket:id="form">
+		<div class="login_form">
+			<table border="0" cellpadding="">
+				<tr>
+					<td align="right">Email Address:</td>
+					<td><input id="username" wicket:id="username"
+						type="text" size="35" /></td>
+				</tr>
+				<tr>
+					<td align="right">Password:</td>
+					<td><input wicket:id="password" type="password" size="35" /></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="Login" /></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

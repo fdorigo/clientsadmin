@@ -1,10 +1,13 @@
 package com.fdorigo.igadmin.persistent.auto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.cayenne.CayenneDataObject;
 
 import com.fdorigo.igadmin.persistent.Location;
+import com.fdorigo.igadmin.persistent.Package;
+import com.fdorigo.igadmin.persistent.Session;
 import com.fdorigo.igadmin.persistent.Trainer;
 
 /**
@@ -30,6 +33,8 @@ public abstract class _Client extends CayenneDataObject {
     public static final String PHONE_PRIMARY_PROPERTY = "phonePrimary";
     public static final String PHONE_SECONDARY_PROPERTY = "phoneSecondary";
     public static final String LOCATION_PROPERTY = "location";
+    public static final String PACKAGES_PROPERTY = "packages";
+    public static final String SESSIONS_PROPERTY = "sessions";
     public static final String TRAINER_PROPERTY = "trainer";
 
     public static final String ID_PK_COLUMN = "ID";
@@ -138,6 +143,30 @@ public abstract class _Client extends CayenneDataObject {
 
     public Location getLocation() {
         return (Location)readProperty("location");
+    }
+
+
+    public void addToPackages(Package obj) {
+        addToManyTarget("packages", obj, true);
+    }
+    public void removeFromPackages(Package obj) {
+        removeToManyTarget("packages", obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<Package> getPackages() {
+        return (List<Package>)readProperty("packages");
+    }
+
+
+    public void addToSessions(Session obj) {
+        addToManyTarget("sessions", obj, true);
+    }
+    public void removeFromSessions(Session obj) {
+        removeToManyTarget("sessions", obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<Session> getSessions() {
+        return (List<Session>)readProperty("sessions");
     }
 
 

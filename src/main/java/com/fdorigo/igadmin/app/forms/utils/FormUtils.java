@@ -2,12 +2,14 @@ package com.fdorigo.igadmin.app.forms.utils;
 
 import java.util.List;
 
+import org.apache.cayenne.DataObjectUtils;
 import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.exp.ExpressionParameter;
 import org.apache.cayenne.query.SelectQuery;
 
 import com.fdorigo.igadmin.model.DatabaseBridge;
+import com.fdorigo.igadmin.persistent.Client;
 import com.fdorigo.igadmin.persistent.Location;
 import com.fdorigo.igadmin.persistent.Trainer;
 
@@ -30,6 +32,14 @@ public class FormUtils
 		for (Location l : locations)
 		{
 			locationList.add(new LocationSelectOption(l.getName(), l.getName()));
+		}
+	}
+	
+	public static void initClientList(List<ClientSelectOption> clientList, List<Client> clients)
+	{
+		for (Client c : clients)
+		{
+			clientList.add(new ClientSelectOption(DataObjectUtils.intPKForObject(c), c.getName()));
 		}
 	}
 	

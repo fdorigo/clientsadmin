@@ -11,7 +11,7 @@ public class Location extends _Location
 	{
 		if (address == null)
 		{
-			address = new Address(getAddressStreet(), getAddressCity(), getAddressState(), getAddressZip());
+			address = new Address(getAddressNum(), getAddressStreet(), getAddressApt(), getAddressCity(), getAddressState(), getAddressZip());
 		}
 
 		return address;
@@ -19,7 +19,9 @@ public class Location extends _Location
 
 	public void setAddress(Address a)
 	{
+		super.setAddressNum(a.getStreetNum());
 		super.setAddressStreet(a.getStreet());
+		super.setAddressApt(a.getStreetApt());
 		super.setAddressCity(a.getCity());
 		super.setAddressState(a.getState());
 		super.setAddressZip(a.getZip());

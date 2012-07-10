@@ -3,23 +3,26 @@ package com.fdorigo.igadmin.persistent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import org.apache.cayenne.access.DataContext;
-import org.apache.cayenne.query.SelectQuery;
 import org.apache.log4j.Logger;
 
-import com.fdorigo.igadmin.model.DatabaseBridge;
 import com.fdorigo.igadmin.persistent.auto._Client;
 
 public class Client extends _Client
 {
-	private static final String DEFAULT_DATE_FORMAT = "yyyyMMdd";
+	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(Client.class);
+	
+	private static final String DEFAULT_DATE_FORMAT = "yyyyMMdd";
+	
 	private static final long serialVersionUID = 4633162388388367972L;
+	
 	private Address address = null;
+	
 	private Phone secondary = null;
+	
 	private Email email = null;
+	
 	private Phone primary = null;
 
 	public String getTrainerName()

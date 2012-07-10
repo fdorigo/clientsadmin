@@ -8,6 +8,8 @@ public class Address implements Serializable
 	private static final String BLANKSP = " ";
 	private static final String COMMASP = ", ";
 	
+	private String streetNum;
+	private String streetApt;
 	private String street;
 	private String city;
 	private String state;
@@ -25,18 +27,48 @@ public class Address implements Serializable
 		this.state = state;
 		this.zip = zip;
 	}
+
+	public Address(String street_n, String street, String street_a, String city, String state, String zip)
+	{
+		this.streetNum = street_n;
+		this.streetApt = street_a;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+	}
 	
 	@Override
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append(this.street + COMMASP);
+		sb.append(this.streetNum + " " + this.street + " #" + this.streetApt + COMMASP);
 		sb.append(this.city + COMMASP);
 		sb.append(this.state + BLANKSP);
 		sb.append(this.zip);
 		
 		return sb.toString();
+	}
+
+	public String getStreetNum()
+	{
+		return streetNum;
+	}
+
+	public void setStreetNum(String street_num)
+	{
+		this.streetNum = street_num;
+	}
+
+	public String getStreetApt()
+	{
+		return streetApt;
+	}
+
+	public void setStreetApt(String street_apt)
+	{
+		this.streetApt = street_apt;
 	}
 
 	public String getCity()

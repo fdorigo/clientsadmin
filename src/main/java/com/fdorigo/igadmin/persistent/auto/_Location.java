@@ -30,6 +30,7 @@ public abstract class _Location extends CayenneDataObject {
     public static final String PHONE_SECONDARY_PROPERTY = "phoneSecondary";
     public static final String TRAINER_ID_PROPERTY = "trainerId";
     public static final String CLIENTS_PROPERTY = "clients";
+    public static final String TO_TRAINER_PROPERTY = "toTrainer";
     public static final String TRAINERS_PROPERTY = "trainers";
 
     public static final String ID_PK_COLUMN = "ID";
@@ -134,6 +135,15 @@ public abstract class _Location extends CayenneDataObject {
     @SuppressWarnings("unchecked")
     public List<Client> getClients() {
         return (List<Client>)readProperty("clients");
+    }
+
+
+    public void setToTrainer(Trainer toTrainer) {
+        setToOneTarget("toTrainer", toTrainer, true);
+    }
+
+    public Trainer getToTrainer() {
+        return (Trainer)readProperty("toTrainer");
     }
 
 
