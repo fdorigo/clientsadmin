@@ -1,6 +1,7 @@
 package com.fdorigo.igadmin.app.auth;
 
 import com.fdorigo.igadmin.app.BasePage;
+import com.fdorigo.igadmin.app.HomePage;
 
 public class LogoutPage extends BasePage
 {
@@ -8,10 +9,7 @@ public class LogoutPage extends BasePage
 
 	public LogoutPage()
 	{
-		if (((AppSession) getSession()).isUserLoggedIn())
-		{
-			((AppSession) getSession()).setLoggedInUser(null);
-			setResponsePage(LoginPage.class);
-		}
+		((AppSession) getSession()).invalidate();
+		setResponsePage(HomePage.class);
 	}
 }

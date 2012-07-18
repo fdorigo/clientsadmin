@@ -1,11 +1,13 @@
 package com.fdorigo.igadmin.app;
 
-import org.apache.cayenne.BaseContext;
-import org.apache.cayenne.access.DataContext;
 import org.apache.log4j.Logger;
+import org.apache.wicket.Page;
+import org.apache.wicket.Session;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 
 import com.fdorigo.igadmin.app.auth.AppSession;
 import com.fdorigo.igadmin.app.auth.LoginPage;
@@ -20,35 +22,53 @@ public class WicketApplication extends AuthenticatedWebApplication
 {
 	private static final Logger LOG = Logger.getLogger(WicketApplication.class);
 
-	/**
-	 * @see org.apache.wicket.Application#getHomePage()
-	 */
+	public WicketApplication()
+	{
+		LOG.trace("New Wicket Application");
+	}
+
 	@Override
-	public Class<HomePage> getHomePage()
+	protected void onUnauthorizedPage(Page page)
+	{
+		LOG.debug("Unauthorized page requested");
+		super.onUnauthorizedPage(page);
+	}
+
+	@Override
+	public void restartResponseAtSignInPage()
+	{
+		LOG.debug("Restart at sign in...");
+		super.restartResponseAtSignInPage();
+	}
+
+	@Override
+	public Session newSession(Request request, Response response)
+	{
+		return new AppSession(request);
+	}
+
+	@Override
+	protected void init()
+	{
+		LOG.debug("Init Wicket Application");
+		super.init();
+	}
+
+	@Override
+	public Class<? extends Page> getHomePage()
 	{
 		return HomePage.class;
-	}
-
-	/**
-	 * @see org.apache.wicket.Application#init()
-	 */
-	@Override
-	public void init()
-	{
-		super.init();
-		BaseContext.bindThreadObjectContext(DataContext.createDataContext());
-		LOG.debug("Here we go...");
-	}
-
-	@Override
-	protected Class<? extends WebPage> getSignInPageClass()
-	{
-		return LoginPage.class;
 	}
 
 	@Override
 	protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass()
 	{
 		return AppSession.class;
+	}
+
+	@Override
+	protected Class<? extends WebPage> getSignInPageClass()
+	{
+		return LoginPage.class;
 	}
 }

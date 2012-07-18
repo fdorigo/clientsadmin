@@ -16,7 +16,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.MaximumValidator;
 import org.apache.wicket.validation.validator.MinimumValidator;
@@ -26,7 +25,6 @@ import com.fdorigo.igadmin.app.forms.utils.LocationSelectOption;
 import com.fdorigo.igadmin.app.forms.utils.StateSelectOption;
 import com.fdorigo.igadmin.model.DatabaseBridge;
 import com.fdorigo.igadmin.persistent.Location;
-import com.fdorigo.igadmin.persistent.Phone;
 import com.fdorigo.igadmin.persistent.Trainer;
 import com.fdorigo.igadmin.persistent.utils.DBUtils;
 

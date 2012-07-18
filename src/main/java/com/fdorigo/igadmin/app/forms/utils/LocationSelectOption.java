@@ -2,8 +2,6 @@ package com.fdorigo.igadmin.app.forms.utils;
 
 import java.io.Serializable;
 
-import com.fdorigo.igadmin.persistent.Location;
-
 public class LocationSelectOption implements Serializable
 {
 	private static final long serialVersionUID = -2941979778049979428L;

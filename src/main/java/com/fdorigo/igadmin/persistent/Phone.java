@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 public class Phone implements Serializable
 {
 	private static final long serialVersionUID = -7227906431599297832L;
+	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(Phone.class);
 	
 	private String number;
