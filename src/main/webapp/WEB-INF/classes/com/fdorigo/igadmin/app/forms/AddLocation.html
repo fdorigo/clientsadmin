@@ -1,0 +1,85 @@
+<html>
+<wicket:panel>
+	<div id="stylized">
+		<form wicket:id="form">
+			<fieldset>
+				<h1>Add Location</h1>
+				<p>Add a new location to the database</p>
+
+				<div class="form_input_line">
+					<label>Name 
+					<span class="small">Specify a location name</span>
+					</label> 
+					<input type="text" wicket:id="locName" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>Manager Contact 
+					<span class="small">Specify the manager name</span>
+					</label> 
+					<input type="text" wicket:id="mgrNameFirst" /> 
+					<input type="text" wicket:id="mgrNameLast" /> 
+				</div>
+				
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Primary phone</span>
+					</label> 
+					<input class="phAre" maxlength="3" style="width:40px;" type="text" wicket:id="priPhArea" /> <span class="phoneSep">&mdash;</span>
+					<input class="phExc" maxlength="3" style="width:40px;" type="text" wicket:id="priPhExchange" /> <span class="phoneSep">&mdash;</span> 
+					<input class="phSuf" maxlength="4" style="width:60px;" type="text" wicket:id="priPhSuffix" /> <span class="phoneSep">ext:</span> 
+					<input class="phExt" maxlength="9" style="width:80px;" type="text" wicket:id="priPhExtension" /> 
+				</div>
+				
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Alternate phone</span>
+					</label> 
+					<input class="phAre" maxlength="3" style="width:40px;" type="text" wicket:id="secPhArea" /> <span class="phoneSep">&mdash;</span>
+					<input class="phExc" maxlength="3" style="width:40px;" type="text" wicket:id="secPhExchange" /> <span class="phoneSep">&mdash;</span> 
+					<input class="phSuf" maxlength="4" style="width:60px;" type="text" wicket:id="secPhSuffix" /> <span class="phoneSep">ext:</span> 
+					<input class="phExt" maxlength="9" style="width:80px;" type="text" wicket:id="secPhExtension" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">email address</span>
+					</label> 
+					<input maxlength="100" style="width:200px;" type="email" wicket:id="emailAddr" /> 
+				</div>
+
+				<div class="form_input_line">				
+					<label>Address 
+						<span class="small">Specify the location address</span>
+					</label> 
+					<input style="width:80px;" type="text" wicket:id="locAddrNum" /> 
+					<input style="width:260px;" type="text" wicket:id="locAddrStreet" /> 
+					<input style="width:80px;" type="text" wicket:id="locAddrApt" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>
+						&nbsp;
+					</label>				
+					<input style="width:170px;" type="text" wicket:id="locAddrCity" /> 
+					<select style="width:170px;" type="text" wicket:id="locAddrState"></select> 
+					<input style="width:86px;" type="text" wicket:id="locAddrZip" />
+				</div>
+
+				<div class="form_input_line">
+					<label>
+						&nbsp;
+					</label>				
+					<input style="width:170px;" type="tel" id="newPhone" onChange="formatPhone(this)"/> 
+				</div>
+
+				<div class="form_input_line">
+					<input class="submitButton" type="submit" value="Add Location" />
+				</div>		
+			</fieldset>
+		</form>
+
+	</div>
+
+</wicket:panel>
+</html>

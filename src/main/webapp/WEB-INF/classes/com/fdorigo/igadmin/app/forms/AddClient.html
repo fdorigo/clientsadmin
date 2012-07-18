@@ -1,0 +1,79 @@
+<html>
+<wicket:panel>
+	<div id="stylized">
+
+		<span id="feedback" wicket:id="feedback"></span>
+		
+		<form wicket:id="form">
+			<fieldset>
+				<h1>Add Client</h1>
+				<p>Add a new client to the database</p>
+
+				<div class="form_input_line">
+					<label>Name 
+					<span class="small">First name</span>
+					</label> 
+					<input type="text" wicket:id="nameFirst" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Middle name</span>
+					</label> 
+					<input type="text" wicket:id="nameMiddle" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Last name</span>
+					</label> 
+					<input type="text" wicket:id="nameLast" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>Contact Information 
+					<span class="small">Primary phone</span>
+					</label> 
+					<input class="phNum" maxlength="25" type="text" wicket:id="phonePrimary" /> 
+				</div>
+				
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Alternate phone</span>
+					</label> 
+					<input class="phNum" maxlength="25" type="text" wicket:id="phoneSecondary" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>&nbsp; 
+					<span class="small">Email address</span>
+					</label> 
+					<input maxlength="100" type="email" wicket:id="emailAddress" /> 
+				</div>
+
+				<div class="form_input_line">				
+					<label>Address 
+						<span class="small">Specify the location address</span>
+					</label> 
+					<input type="text" wicket:id="addressStreet" /> 
+				</div>
+
+				<div class="form_input_line">
+					<label>
+						&nbsp;
+					</label>				
+					<input style="width:120px;" type="text" wicket:id="addressCity" /> 
+					<select style="width:100px;" type="text" wicket:id="addressState"></select> 
+					<input style="width:60px;" type="text" wicket:id="addressZip" />
+				</div>
+
+				<div class="form_input_line">
+					<input class="submitButton" type="submit" value="Add Trainer" />
+				</div>				
+			</fieldset>
+		</form>
+
+	</div>
+
+</wicket:panel>
+</html>
